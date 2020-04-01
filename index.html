@@ -33,22 +33,10 @@
       <hr>
       <div class="d-flex justify-content-center">
         <div class="w-50 d-flex flex-column pt-5">
-          <button class="btn btn-lg btn-primary mt-5" onClick="game.changeKey('up');">Thrust: <span id="control-up">ArrowUp</span></button>
-          <button class="btn btn-lg btn-primary mt-4" onClick="game.changeKey('left');">Rotate Counter-Clockwise: <span id="control-left">ArrowLeft</span></button>
-          <button class="btn btn-lg btn-primary mt-4" onClick="game.changeKey('right');">Rotate Clockwise: <span id="control-right">ArrowRight</span></button>
-          <button class="btn btn-lg btn-secondary mt-4" onClick="navigate('main-menu');">Back to Main Menu</button>
-        </div>
-      </div>
-    </div>
-
-
-    <div id="level-selector" class="screen">
-      <h1 class="display-2 text-center text-white pt-5">Maze Select</h1>
-      <hr>
-      <div class="d-flex justify-content-center">
-        <div class="w-50 d-flex flex-column pt-5">
-          <button class="btn btn-lg btn-success mt-4" onClick="game.level = 1; navigate('game-play');">Level 1</button>
-          <button class="btn btn-lg btn-warning mt-4" onClick="game.level = 2; navigate('game-play');">Level 2</button>
+          <button class="btn btn-lg btn-primary mt-5" onClick="game.changeKey('up');">Up: <span id="control-up">ArrowUp</span></button>
+          <button class="btn btn-lg btn-primary mt-4" onClick="game.changeKey('down');">Down: <span id="control-down">ArrowDown</span></button>
+          <button class="btn btn-lg btn-primary mt-4" onClick="game.changeKey('left');">Left: <span id="control-left">ArrowLeft</span></button>
+          <button class="btn btn-lg btn-primary mt-4" onClick="game.changeKey('right');">Right: <span id="control-right">ArrowRight</span></button>
           <button class="btn btn-lg btn-secondary mt-4" onClick="navigate('main-menu');">Back to Main Menu</button>
         </div>
       </div>

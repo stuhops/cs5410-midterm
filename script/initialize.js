@@ -46,7 +46,7 @@ manageHighScores();
 
 if(JSON.parse(window.localStorage.getItem('midterm-controls')) !== null) {
   game.up = JSON.parse(window.localStorage.getItem('midterm-controls')).up;
-  game.up = JSON.parse(window.localStorage.getItem('midterm-controls')).down;
+  game.down = JSON.parse(window.localStorage.getItem('midterm-controls')).down;
   game.left = JSON.parse(window.localStorage.getItem('midterm-controls')).left;
   game.right = JSON.parse(window.localStorage.getItem('midterm-controls')).right;
 }
