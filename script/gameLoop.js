@@ -9,6 +9,7 @@ game.gameLoop = function() {
 
 
   function update(elapsedTime) {
+    game.domStats.update;
   }
 
 

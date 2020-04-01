@@ -100,7 +100,7 @@
 
 
     <div id="level-selector" class="screen">
-      <h1 class="display-2 text-center text-white pt-5">Maze Select</h1>
+      <h1 class="display-2 text-center text-white pt-5">Level Select</h1>
       <hr>
       <div class="d-flex justify-content-center">
         <div class="w-50 d-flex flex-column pt-5">
@@ -120,26 +120,11 @@
         <div class="p-2">High Score: 
           <span name="high-score"></span>
         </div>
-        <div class="p-2">
-          <div id="fuel-div">
-            Fuel: 
-            <span id="fuel"></span>
-          </div>
-        </div>
-        <div class="p-2">
-          <div id="vert-speed-div">
-            Verticle Speed: 
-            <span id="vert-speed"></span>
-          </div>
-        </div>
-        <div class="p-2">
-          <div id="angle-div">
-            Angle: 
-            <span id="angle"></span>
-          </div>
+        <div class="p-2">Time Left:
+          <span name="time-left"></span>
         </div>
       </div>
-      <canvas id="canvas-main" width="1024" height="1024" style="background-image: url('./assets/background.jpg');"></canvas>
+      <canvas id="canvas-main" width="1024" height="1024"></canvas>
       <button class="btn w-100 btn-secondary" onClick="navigate('main-menu');">Main Menu</button>"
     </div>
 
