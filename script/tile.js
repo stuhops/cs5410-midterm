@@ -117,11 +117,29 @@ game.getNewTiles = function(level) {
     }
   }
   else if(level === 2) {
-    console.log('Level 2 is not ready to be played yet (tile.js)')
+    game.gridWidth = 8;
+    game.gridHeight = 8;
+    let width = game.gameWidth / game.gridWidth;
+    let height = game.gameHeight / game.gridWidth;
+    for(let i = 0; i < game.gridHeight; i++) {
+      let row = [];
+      for(let j = 0; j < game.gridWidth; j++) {
+        if(i*game.gridWidth + j !== game.gridWidth * game.gridHeight - 1) {
+          row.push(game.createTile(`./assets/Tile64-${i*game.gridWidth + j}.png`, j, i, width - 5, height - 5, width, height));
+        }
+        else {
+          row.push(game.createTile(null, j, i, width - 5, height - 5, width, height));
+          game.emptyPos = { x: i, y: j };
+        }
+      }
+      tiles.push(row);
+    }
   }
   
   return tiles;
 };
+
+
 
 game.shuffleTiles = function(moves) {
   let move;
