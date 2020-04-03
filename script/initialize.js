@@ -40,11 +40,7 @@ let game = {
   // --------- High Scores -------------
   highScores: ['Unclaimed', 'Unclaimed', 'Unclaimed', 'Unclaimed', 'Unclaimed'],
 
-  // ----------- Controls --------------
-  up: 'ArrowUp',
-  down: 'ArrowDown',
-  left: 'ArrowLeft',
-  right: 'ArrowRight',
+  // // ----------- Controls --------------
   mouseCapture: false,
 
   // ------------ Audio ----------------
@@ -56,24 +52,14 @@ if(JSON.parse(window.localStorage.getItem('midterm-high-scores')) !== null)
   game.highScores = JSON.parse(window.localStorage.getItem('midterm-high-scores'));
 manageHighScores();
 
-if(JSON.parse(window.localStorage.getItem('midterm-controls')) !== null) {
-  game.up = JSON.parse(window.localStorage.getItem('midterm-controls')).up;
-  game.down = JSON.parse(window.localStorage.getItem('midterm-controls')).down;
-  game.left = JSON.parse(window.localStorage.getItem('midterm-controls')).left;
-  game.right = JSON.parse(window.localStorage.getItem('midterm-controls')).right;
-}
-
-document.getElementById('control-up').innerHTML = game.up;
-document.getElementById('control-down').innerHTML = game.down;
-document.getElementById('control-left').innerHTML = game.left;
-document.getElementById('control-right').innerHTML = game.right;
 
 function newGame() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   domStats.initialize();
 
   game.tiles = game.getNewTiles(game.level);
-  game.shuffleTiles(20);
+  game.shuffleTiles(0);
+  game.endGameTimer = 200;
   game.win = false;
   game.moves = 0;
 

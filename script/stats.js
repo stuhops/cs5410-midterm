@@ -40,7 +40,7 @@ let domStats = (function () {
 function manageHighScores (newScore) {
   if(newScore) {
     for(let i = 0; i < game.highScores.length; i++) {
-      if(game.highScores[i] === 'Unclaimed' || newScore > game.highScores[i]) {
+      if(game.highScores[i] === 'Unclaimed' || newScore < game.highScores[i]) {
         game.highScores.splice(i, 0, newScore);
         game.highScores.pop();
         window.localStorage.setItem('midterm-high-scores', JSON.stringify(game.highScores));

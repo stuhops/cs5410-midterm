@@ -24,6 +24,9 @@ game.gameLoop = (function() {
         endGame(elapsedTime);
       }
     }
+    else {
+      gameOver();
+    }
   }
 
 
@@ -52,9 +55,6 @@ game.gameLoop = (function() {
     if(!game.gameOver && requestFrame) {
       requestAnimationFrame(gameLoop);
     }
-    else {
-      gameOver(elapsedTime);
-    }
   }
 
   function startGameLoop() {
@@ -70,13 +70,12 @@ game.gameLoop = (function() {
     game.gameLoopRunning = false;
   }
 
-  function gameOver(elapsedTime) {
-    game.gameOverTimer -= elapsedTime;
+  function gameOver() {
     document.getElementById('my-prev-score').innerHTML = document.getElementById('my-score').innerHTML;
-    document.getElementById('my-score').innerHTML = '100';
+    manageHighScores(game.moves);
+    requestFrame = false;
   }
 
-  game.endGameTimer = 1000;
   function endGame(elapsedTime) {
     game.endGameTimer -= elapsedTime;
     if(game.endGameTimer < 0) game.win = true;
