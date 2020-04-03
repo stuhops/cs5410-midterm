@@ -127,7 +127,7 @@ game.shuffleTiles = function(moves) {
     }
     else if(move === 2){
       // right
-      if(game.emptyPos.y + 1 < game.gridWidth) {
+      if(game.emptyPos.x + 1 < game.gridWidth) {
         let tile = game.tiles[game.emptyPos.y][game.emptyPos.x + 1];
         tile.setPos(game.emptyPos.x, game.emptyPos.y);
         game.tiles[game.emptyPos.y][game.emptyPos.x].setPos(game.emptyPos.x + 1, game.emptyPos.y);
@@ -155,3 +155,4 @@ game.shuffleTiles = function(moves) {
     }
   }
 }
+

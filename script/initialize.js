@@ -17,6 +17,8 @@ let game = {
   gameWidth: 1024,
   canvasHeight: 400,
   canvasWidth: 400,
+  canvasDivHeight: 800,
+  canvasDivWidth: 800,
   canvas: canvas,
   context: context,
 
@@ -25,10 +27,13 @@ let game = {
   levels: 2,
   gameOver: false,
   score: 100,
+  gameLoopRunning: false,
 
   // ---------- Game Vars --------------
   baseScore: 100,
   baseTimer: 100,
+  gridWidth: 4,
+  gridHeight: 4,
 
   // --------- High Scores -------------
   highScores: ['Unclaimed', 'Unclaimed', 'Unclaimed', 'Unclaimed', 'Unclaimed'],

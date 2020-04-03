@@ -79,11 +79,32 @@ game.mouse.register('mousedown', function(e, elapsedTime) {
 
 game.mouse.register('mouseup', function(e, elapsedTime) {
     game.mouseCapture = false;
-    console.log('mouseup');
-});
+    let cell = {
+        x: parseInt((e.clientX - canvas.offsetLeft) / (game.canvasDivWidth / game.gridWidth)),
+        y: parseInt((e.clientY - canvas.offsetTop) / (game.canvasDivHeight / game.gridHeight))
+    };
 
-game.mouse.register('mousemove', function(e, elapsedTime) {
-    if (game.mouseCapture) {
-        console.log('mousemove');
+    if(
+        game.gameLoopRunning && (
+            ((game.emptyPos.x === cell.x - 1 || game.emptyPos.x === cell.x + 1) && (game.emptyPos.y === cell.y)) ||
+            ((game.emptyPos.x === cell.x) && (game.emptyPos.y === cell.y - 1 || game.emptyPos.y === cell.y + 1))
+        ) && !(
+            !((game.emptyPos.x === cell.x - 1 || game.emptyPos.x === cell.x + 1) && (game.emptyPos.y === cell.y)) &&
+            !((game.emptyPos.x === cell.x) && (game.emptyPos.y === cell.y - 1 || game.emptyPos.y === cell.y + 1))
+        )
+    ) {
+        let tile = game.tiles[cell.y][cell.x];
+        let blank = game.tiles[game.emptyPos.y][game.emptyPos.x];
+
+        tile.setPos(game.emptyPos.x, game.emptyPos.y);
+        blank.setPos(cell.x, cell.y);
+
+        game.tiles[cell.y][cell.x] = blank;
+        game.tiles[game.emptyPos.y][game.emptyPos.x] = tile;
+
+        game.emptyPos.x = cell.x;
+        game.emptyPos.y = cell.y;
+        console.log('switch');
     }
+    console.log(cell);
 });

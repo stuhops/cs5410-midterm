@@ -51,6 +51,7 @@ game.gameLoop = (function() {
 
   function startGameLoop() {
     game.gameOverTimer = 3000;
+    game.gameLoopRunning = true;
     lastTime = performance.now();
     requestFrame = true;
     requestAnimationFrame(gameLoop);
@@ -58,6 +59,7 @@ game.gameLoop = (function() {
 
   function stopGameLoop() {
     requestFrame = false;
+    game.gameLoopRunning = false;
   }
 
   function gameOver(elapsedTime) {
