@@ -10,6 +10,7 @@ game.createTile = function (imgSrc, x, y, width, height, deltaX, deltaY, xHome, 
   }
 
   tile.pos = { x, y };
+  tile.move = { timer: 0 }
   if(xHome && yHome) { tile.home = { x: xHome, y: yHome, } }
   else { tile.home = { x, y } }
   tile.width = width;
@@ -24,11 +25,24 @@ game.createTile = function (imgSrc, x, y, width, height, deltaX, deltaY, xHome, 
 
   // ---------------------- MAIN FUNCTIONS -------------------------------
   function update(elapsedTime) {
-    // if home update particles
-    updateCenter();
-    if(tile.celebration.timer > 0) {
-      tile.celebration.timer -= elapsedTime;
-      tile.celebration.vis.update(elapsedTime)
+    if(tile.move.timer > 0) {
+      tile.move.timer -= elapsedTime;
+      let distX = tile.move.x - tile.pos.x;
+      let distY = tile.move.y - tile.pos.y;      tile.center = {
+        x: tile.pos.x * tile.offset.x + tile.width / 2,
+        y: tile.pos.y * tile.offset.y + tile.height / 2
+      }
+
+      tile.move.x = tile.pos.x - distX / 2;
+      tile.move.y = tile.pos.y - distY / 2;
+      updateCenter(tile.move.x, tile.move.y);
+    }
+    else {
+      updateCenter();
+      if(tile.celebration.timer > 0) {
+        tile.celebration.timer -= elapsedTime;
+        tile.celebration.vis.update(elapsedTime)
+      }
     }
 
   }
@@ -68,15 +82,33 @@ game.createTile = function (imgSrc, x, y, width, height, deltaX, deltaY, xHome, 
   let getPos = () => tile.pos;
   let getHome = () => tile.home;
 
-  let updateCenter = () => {
-    tile.center = {
-      x: tile.pos.x * tile.offset.x + tile.width / 2,
-      y: tile.pos.y * tile.offset.y + tile.height / 2
+  let updateCenter = (x, y) => {
+    if(x) {
+      tile.center = {
+        x: tile.move.x * tile.offset.x + tile.width / 2,
+        y: tile.move.y * tile.offset.y + tile.height / 2
+      }
+    }
+    else {
+      tile.center = {
+        x: tile.pos.x * tile.offset.x + tile.width / 2,
+        y: tile.pos.y * tile.offset.y + tile.height / 2
+      }
     }
   };
   updateCenter();
 
-  let setPos = (x, y) => tile.pos = { x, y };
+  let setPos = (x, y, animate=false) => {
+    if(animate) {
+      tile.move = {
+        timer: 2000,
+        x: tile.pos.x,
+        y: tile.pos.y
+      }
+    }
+
+    tile.pos = { x, y };
+  }
 
 
 

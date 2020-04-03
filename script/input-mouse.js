@@ -96,7 +96,7 @@ game.mouse.register('mouseup', function(e, elapsedTime) {
         let tile = game.tiles[cell.y][cell.x];
         let blank = game.tiles[game.emptyPos.y][game.emptyPos.x];
 
-        tile.setPos(game.emptyPos.x, game.emptyPos.y);
+        tile.setPos(game.emptyPos.x, game.emptyPos.y, true);
         blank.setPos(cell.x, cell.y);
 
         game.tiles[cell.y][cell.x] = blank;
