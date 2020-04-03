@@ -36,6 +36,7 @@ let game = {
   down: 'ArrowDown',
   left: 'ArrowLeft',
   right: 'ArrowRight',
+  mouseCapture: false,
 
   // ------------ Audio ----------------
 

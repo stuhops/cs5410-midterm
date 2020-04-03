@@ -10,6 +10,7 @@ game.gameLoop = (function() {
 
   function update(elapsedTime) {
     domStats.update(elapsedTime);
+    game.mouse.update(elapsedTime);
   }
 
 
