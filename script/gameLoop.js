@@ -13,7 +13,7 @@ game.gameLoop = (function() {
     game.mouse.update(elapsedTime);
     for(let i = 0; i < game.tiles.length; i++) {
       for(let j = 0; j < game.tiles[i].length; j++) {
-        game.tiles[i][j].update();
+        game.tiles[i][j].update(elapsedTime);
       }
     }
   }
