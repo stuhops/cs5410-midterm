@@ -15,6 +15,8 @@ let game = {
   // ------------- Canvas --------------
   gameHeight: 1024,
   gameWidth: 1024,
+  canvasHeight: 400,
+  canvasWidth: 400,
   canvas: canvas,
   context: context,
 

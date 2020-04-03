@@ -56,8 +56,8 @@ game.createTile = function (imgSrc, x, y, width, height, xHome, yHome) {
 game.getNewTiles = function(level) {
   let tiles = [];
   if(level === 1) {
-    let width = game.gameWidth / 4;
-    let height = game.gameHeight / 4;
+    let width = game.canvasWidth / 4;
+    let height = game.canvasHeight / 4;
     for(let i = 0; i < 4; i++) {
       for(let j = 0; j < 4; j++) {
         if(i*4 + j !== 15) {
