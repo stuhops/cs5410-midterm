@@ -25,6 +25,8 @@ let game = {
   score: 100,
 
   // ---------- Game Vars --------------
+  baseScore: 100,
+  baseTimer: 100,
 
   // --------- High Scores -------------
   highScores: ['Unclaimed', 'Unclaimed', 'Unclaimed', 'Unclaimed', 'Unclaimed'],
@@ -58,6 +60,7 @@ document.getElementById('control-right').innerHTML = game.right;
 
 function newGame() {
   context.clearRect(0, 0, canvas.width, canvas.height);
+  domStats.initialize();
 
   game.gameLoop.start();
 }

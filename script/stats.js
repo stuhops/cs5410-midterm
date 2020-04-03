@@ -1,4 +1,8 @@
-game.domStats = function () {
+let domStats = (function () {
+  function initialize() {
+    document.getElementById('time-left').innerHTML = game.baseTimer;
+    document.getElementById('my-score').innerHTML = game.baseScore;
+  }
 
   function update(elapsedTime) {
     updateTime(elapsedTime);  
@@ -7,7 +11,7 @@ game.domStats = function () {
   }
 
   function updateTime(elapsedTime) {
-    document.getElementById('time-left').innerHTML = Number(document.getElementById('time-left').innerHTML) + elapsedTime;
+    document.getElementById('time-left').innerHTML = (Number(document.getElementById('time-left').innerHTML) - (.001 * elapsedTime)).toFixed(2);
   }
   
   function updateScore(elapsedTime) {
@@ -22,16 +26,19 @@ game.domStats = function () {
   }
 
   function updateHighScore() {
-    document.getElementById('high-score') = document.getElementById('high-score-1');
+    for(let i = 0; i < 2; i++) {
+      document.getElementsByName('high-score')[i] = document.getElementById('high-score-1');
+    }
   }
 
   return {
+    initialize,
     update,
   }
-}();
+})();
 
 
-game.manageHightScores = function (newScore) {
+function manageHighScores (newScore) {
   if(newScore) {
     for(let i = 0; i < game.highScores.length; i++) {
       if(game.highScores[i] === 'Unclaimed' || newScore > game.highScores[i]) {

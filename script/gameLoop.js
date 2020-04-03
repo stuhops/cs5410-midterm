@@ -1,4 +1,4 @@
-game.gameLoop = function() {
+game.gameLoop = (function() {
   let lastTime = performance.now();
   let requestFrame = true;
 
@@ -9,7 +9,7 @@ game.gameLoop = function() {
 
 
   function update(elapsedTime) {
-    game.domStats.update;
+    domStats.update(elapsedTime);
   }
 
 
@@ -68,4 +68,4 @@ game.gameLoop = function() {
     start: startGameLoop,
     stop: stopGameLoop,
   }
-}();
+})();
