@@ -16,12 +16,13 @@ let domStats = (function () {
   
   function updateScore(elapsedTime) {
     let currScore = Number(document.getElementById('my-score').innerHTML);
-    currScore -= elapsedTime;
+    console.log(currScore);
+    currScore -= .5 * (elapsedTime * .001);
     if(currScore <= 0) {
       document.getElementById('my-score').innerHTML = 0;
     }
     else {
-      document.getElementById('my-score').innerHTML = currScore;
+      document.getElementById('my-score').innerHTML = currScore.toFixed(2);
     }
   }
 
