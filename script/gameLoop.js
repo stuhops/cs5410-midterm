@@ -11,11 +11,17 @@ game.gameLoop = (function() {
   function update(elapsedTime) {
     domStats.update(elapsedTime);
     game.mouse.update(elapsedTime);
+    for(let i = 0; i < game.tiles.length; i++) {
+      game.tiles[i].update();
+    }
   }
 
 
   function render() {
     context.clearRect(0, 0, canvas.width, canvas.height);
+    for(let i = 0; i < game.tiles.length; i++) {
+      game.tiles[i].render();
+    }
   }
 
 

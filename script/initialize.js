@@ -63,5 +63,7 @@ function newGame() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   domStats.initialize();
 
+  game.tiles = game.getNewTiles(game.level);
+
   game.gameLoop.start();
 }
