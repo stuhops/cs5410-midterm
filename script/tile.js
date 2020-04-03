@@ -1,4 +1,4 @@
-game.createTile = function (imgSrc, x, y, width, height, xHome, yHome) {
+game.createTile = function (imgSrc, x, y, width, height, deltaX, deltaY, xHome, yHome) {
   // ---------------------- CREATE TILE OBJECT ---------------------------
   let tile = loadImage(imgSrc);
 
@@ -7,6 +7,7 @@ game.createTile = function (imgSrc, x, y, width, height, xHome, yHome) {
   else { tile.home = { x, y } }
   tile.width = width;
   tile.height = height;
+  tile.offset = { x: deltaX, y: deltaY }
 
   // ---------------------- MAIN FUNCTIONS -------------------------------
   function update(elapsedTime) {
@@ -29,8 +30,8 @@ game.createTile = function (imgSrc, x, y, width, height, xHome, yHome) {
 
   let updateCenter = () => {
     tile.center = {
-      x: tile.pos.x + tile.width / 2,
-      y: tile.pos.y + tile.height / 2
+      x: tile.pos.x * tile.offset.x + tile.width / 2,
+      y: tile.pos.y * tile.offset.y + tile.height / 2
     }
   };
   updateCenter();
@@ -62,7 +63,7 @@ game.getNewTiles = function(level) {
       let row = [];
       for(let j = 0; j < 4; j++) {
         if(i*4 + j !== 15) {
-          row.push(game.createTile(`./assets/Tile128-${i*4 + j}.png`, j * width, i * height, width - 5, height - 5));
+          row.push(game.createTile(`./assets/Tile128-${i*4 + j}.png`, j, i, width - 5, height - 5, width, height));
         }
       }
       tiles.push(row);
