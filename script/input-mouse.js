@@ -105,6 +105,7 @@ game.mouse.register('mouseup', function(e, elapsedTime) {
         game.emptyPos.x = cell.x;
         game.emptyPos.y = cell.y;
         game.moves++;
+        console.log(tile.isHome());
         console.log('switch');
     }
     console.log(cell);

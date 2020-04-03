@@ -16,23 +16,53 @@ game.createTile = function (imgSrc, x, y, width, height, deltaX, deltaY, xHome, 
   tile.height = height;
   tile.offset = { x: deltaX, y: deltaY }
 
+  tile.celebration = {
+    bool: false,
+    timer: 0,
+  };
+
+
   // ---------------------- MAIN FUNCTIONS -------------------------------
   function update(elapsedTime) {
     // if home update particles
     updateCenter();
+    if(tile.celebration.timer > 0) {
+      tile.celebration.timer -= elapsedTime;
+      tile.celebration.vis.update(elapsedTime)
+    }
 
   }
 
   function render() {
     // if home render particles
     if(tile.type !== 'blank') {
+      if(tile.celebration.timer > 0) {
+        tile.celebration.vis.render();
+      }
       renderImage(tile, game.context);
     }
   }
 
   // ---------------------- HELPER FUNCTIONS -----------------------------
 
-  let isHome = () => tile.pos === tile.home;
+  function startHomeCel() {
+    tile.celebration.timer = 2000
+    updateCenter();
+    tile.celebration.vis = ParticleSystemCircular(game.graphics, {
+      image: './assets/fire.png',
+      center: tile.center,
+      size: {mean: 25, stdev: 10},
+      speed: { mean: 0, stdev: 0.2},
+      lifetime: { mean: 2000, stdev: 500}
+    });
+  }
+
+  let isHome = () => {
+    if(tile.pos.x === tile.home.x && tile.pos.y === tile.home.y) {
+      startHomeCel();
+    }
+    return tile.pos.x === tile.home.x && tile.pos.y === tile.home.y;
+  }
   let isBlank = () => tile.type === 'blank';
 
   let getPos = () => tile.pos;
