@@ -11,7 +11,7 @@ let domStats = (function () {
   }
 
   function updateTime(elapsedTime) {
-    let time = (Number(document.getElementById('time-left').innerHTML) - (.001 * elapsedTime)).toFixed(2);
+    let time = (Number(document.getElementById('time-left').innerHTML) + (.001 * elapsedTime)).toFixed(2);
     if(time <= 0) {
       document.getElementById('time-left').innerHTML = 0;
     }

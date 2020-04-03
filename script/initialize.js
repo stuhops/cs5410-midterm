@@ -30,8 +30,8 @@ let game = {
   gameLoopRunning: false,
 
   // ---------- Game Vars --------------
-  baseScore: 100,
-  baseTimer: 100,
+  baseScore: 0,
+  baseTimer: 0,
   gridWidth: 4,
   gridHeight: 4,
 
