@@ -66,6 +66,7 @@ function newGame() {
   domStats.initialize();
 
   game.tiles = game.getNewTiles(game.level);
+  game.shuffleTiles(5);
 
   game.gameLoop.start();
 }

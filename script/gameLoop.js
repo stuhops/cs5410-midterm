@@ -13,7 +13,9 @@ game.gameLoop = (function() {
     game.mouse.update(elapsedTime);
     for(let i = 0; i < game.tiles.length; i++) {
       for(let j = 0; j < game.tiles[i].length; j++) {
-        game.tiles[i][j].update(elapsedTime);
+        if(!game.tiles[i][j].isBlank()) {
+          game.tiles[i][j].update(elapsedTime);
+        }
       }
     }
   }
@@ -23,7 +25,9 @@ game.gameLoop = (function() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     for(let i = 0; i < game.tiles.length; i++) {
       for(let j = 0; j < game.tiles[i].length; j++) {
-        game.tiles[i][j].render();
+        if(!game.tiles[i][j].isBlank()) {
+          game.tiles[i][j].render();
+        }
       }
     }
   }
