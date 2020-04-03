@@ -9,24 +9,32 @@ game.gameLoop = (function() {
 
 
   function update(elapsedTime) {
-    domStats.update(elapsedTime);
-    game.mouse.update(elapsedTime);
-    for(let i = 0; i < game.tiles.length; i++) {
-      for(let j = 0; j < game.tiles[i].length; j++) {
-        if(!game.tiles[i][j].isBlank()) {
-          game.tiles[i][j].update(elapsedTime);
+    if(!game.win) {
+      domStats.update(elapsedTime);
+      game.mouse.update(elapsedTime);
+      for(let i = 0; i < game.tiles.length; i++) {
+        for(let j = 0; j < game.tiles[i].length; j++) {
+          if(!game.tiles[i][j].isBlank()) {
+            game.tiles[i][j].update(elapsedTime);
+          }
         }
+      }
+      if(game.isWin()) {
+        document.getElementById('win-message').style = 'display: block';
+        endGame(elapsedTime);
       }
     }
   }
 
 
   function render() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    for(let i = 0; i < game.tiles.length; i++) {
-      for(let j = 0; j < game.tiles[i].length; j++) {
-        if(!game.tiles[i][j].isBlank()) {
-          game.tiles[i][j].render();
+    if(!game.win){
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      for(let i = 0; i < game.tiles.length; i++) {
+        for(let j = 0; j < game.tiles[i].length; j++) {
+          if(!game.tiles[i][j].isBlank()) {
+            game.tiles[i][j].render();
+          }
         }
       }
     }
@@ -66,19 +74,12 @@ game.gameLoop = (function() {
     game.gameOverTimer -= elapsedTime;
     document.getElementById('my-prev-score').innerHTML = document.getElementById('my-score').innerHTML;
     document.getElementById('my-score').innerHTML = '100';
+  }
 
-    if(game.won) {
-      if(game.gameOverTimer < 0) {
-        game.level++;
-        navigate('game-play')
-      }
-      else if(game.level == game.levels) {
-        navigate('game-over');
-      }
-    }
-    else {
-      navigate('game-over');
-    }
+  game.endGameTimer = 1000;
+  function endGame(elapsedTime) {
+    game.endGameTimer -= elapsedTime;
+    if(game.endGameTimer < 0) game.win = true;
   }
 
   return {

@@ -57,8 +57,8 @@ game.createTile = function (imgSrc, x, y, width, height, deltaX, deltaY, xHome, 
     });
   }
 
-  let isHome = () => {
-    if(tile.pos.x === tile.home.x && tile.pos.y === tile.home.y) {
+  let isHome = (display=true) => {
+    if(tile.pos.x === tile.home.x && tile.pos.y === tile.home.y && display) {
       startHomeCel();
     }
     return tile.pos.x === tile.home.x && tile.pos.y === tile.home.y;
@@ -184,5 +184,18 @@ game.shuffleTiles = function(moves) {
       }
     }
   }
+}
+
+game.isWin = function() {
+  for(let i = 0; i < game.gridHeight; i++) {
+    let row = [];
+    for(let j = 0; j < game.gridWidth; j++) {
+      if(j === game.emptyPos.x && i == game.emptyPos.y){ }
+      else if(!game.tiles[j][i].isHome(false)) {
+        return false;
+      }
+    }
+  }
+  return true;
 }
 

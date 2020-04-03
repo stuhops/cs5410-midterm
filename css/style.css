@@ -15,6 +15,9 @@
   height: 800px;
 }
 
+#win-message {
+  color: yellow;
+}
 
 .screen {
   width: 100%;

@@ -35,6 +35,7 @@ let game = {
   moves: 0,
   gridWidth: 4,
   gridHeight: 4,
+  win: false,
 
   // --------- High Scores -------------
   highScores: ['Unclaimed', 'Unclaimed', 'Unclaimed', 'Unclaimed', 'Unclaimed'],
@@ -72,7 +73,8 @@ function newGame() {
   domStats.initialize();
 
   game.tiles = game.getNewTiles(game.level);
-  game.shuffleTiles(5);
+  game.shuffleTiles(20);
+  game.win = false;
   game.moves = 0;
 
   game.gameLoop.start();
