@@ -32,6 +32,7 @@ let game = {
   // ---------- Game Vars --------------
   baseScore: 0,
   baseTimer: 0,
+  moves: 0,
   gridWidth: 4,
   gridHeight: 4,
 
@@ -72,6 +73,7 @@ function newGame() {
 
   game.tiles = game.getNewTiles(game.level);
   game.shuffleTiles(5);
+  game.moves = 0;
 
   game.gameLoop.start();
 }
