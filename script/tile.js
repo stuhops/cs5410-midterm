@@ -39,10 +39,10 @@ game.createTile = function (imgSrc, x, y, width, height, deltaX, deltaY, xHome, 
     }
     else {
       updateCenter();
-      if(tile.celebration.timer > 0) {
-        tile.celebration.timer -= elapsedTime;
-        tile.celebration.vis.update(elapsedTime)
-      }
+    }
+    if(tile.celebration.timer > 0) {
+      tile.celebration.timer -= elapsedTime;
+      tile.celebration.vis.update(elapsedTime)
     }
 
   }
