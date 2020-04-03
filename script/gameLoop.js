@@ -12,7 +12,9 @@ game.gameLoop = (function() {
     domStats.update(elapsedTime);
     game.mouse.update(elapsedTime);
     for(let i = 0; i < game.tiles.length; i++) {
-      game.tiles[i].update();
+      for(let j = 0; j < game.tiles[i].length; j++) {
+        game.tiles[i][j].update();
+      }
     }
   }
 
@@ -20,7 +22,9 @@ game.gameLoop = (function() {
   function render() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     for(let i = 0; i < game.tiles.length; i++) {
-      game.tiles[i].render();
+      for(let j = 0; j < game.tiles[i].length; j++) {
+        game.tiles[i][j].render();
+      }
     }
   }
 

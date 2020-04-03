@@ -59,11 +59,13 @@ game.getNewTiles = function(level) {
     let width = game.gameWidth / 4;
     let height = game.gameHeight / 4;
     for(let i = 0; i < 4; i++) {
+      let row = [];
       for(let j = 0; j < 4; j++) {
         if(i*4 + j !== 15) {
-          tiles.push(game.createTile(`./assets/Tile128-${i*4 + j}.png`, j * width, i * height, width - 5, height - 5));
+          row.push(game.createTile(`./assets/Tile128-${i*4 + j}.png`, j * width, i * height, width - 5, height - 5));
         }
       }
+      tiles.push(row);
     }
   }
   else if(level === 2) {
@@ -72,3 +74,9 @@ game.getNewTiles = function(level) {
   
   return tiles;
 };
+
+game.shuffleTiles = function(moves) {
+  for(let i = 0; i < moves; i++) {
+
+  }
+}
