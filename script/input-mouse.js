@@ -74,7 +74,7 @@ game.mouse = (function() {
 
 game.mouse.register('mousedown', function(e, elapsedTime) {
     game.mouseCapture = true;
-    console.log('mousedown')
+    console.log('mousedown');
 });
 
 game.mouse.register('mouseup', function(e, elapsedTime) {
