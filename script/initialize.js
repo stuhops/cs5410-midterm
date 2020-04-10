@@ -58,7 +58,7 @@ function newGame() {
   domStats.initialize();
 
   game.tiles = game.getNewTiles(game.level);
-  game.shuffleTiles(20);
+  game.shuffleTiles(1000);
   game.endGameTimer = 200;
   game.win = false;
   game.moves = 0;
